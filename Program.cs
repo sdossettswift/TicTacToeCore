@@ -27,17 +27,39 @@ namespace TicTacToeStarter
             string[] positions = Console.ReadLine().Split(delim); // --> "1,2" -> ["1", "2"]
             int x = Int32.Parse(positions[0]);
             int y = Int32.Parse(positions[1]);
-            int index = GetIndex(x, y);
-            board[index] = "X";
-            PrintBoard();
+            int index = GetIndex(x, y);            
+            if (index >= 0 && index<=8 )
+            {  
+                board[index] = "X";
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please try again.");
+
+                Play();
+                
+
+            }
+            PrintBoard(); 
 
             Play();
+
         }
 
         static int GetIndex(int x, int y)
         {
             return (x - 1) + (y - 1) * 3;
         }
+
+        static bool ValidatePlay(int index) {
+            if ((index > 0) &&(index < 4))
+                return true;
+            else
+                {
+                 return  false;
+                }
+        }
+
 
         static void PrintBoard()
         {
