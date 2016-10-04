@@ -12,6 +12,7 @@ namespace TicTacToeStarter
         static string[] board = { " ", " ", " ",
                                   " ", " ", " ",
                                   " ", " ", " " };
+        static int counter =0; 
         static void Main(string[] args)
         {
             Console.WriteLine("> Let's play a game.");
@@ -28,9 +29,10 @@ namespace TicTacToeStarter
             int x = Int32.Parse(positions[0]);
             int y = Int32.Parse(positions[1]);
             int index = GetIndex(x, y);            
-            if (index >= 0 && index<=8 )
+            if ((x >= 0 && index<=3 ) && (y >= 0 && y<=3 ))
             {  
                 board[index] = "X";
+                counter += 1; 
             }
             else
             {
@@ -41,11 +43,12 @@ namespace TicTacToeStarter
 
             }
             PrintBoard(); 
+            Console.WriteLine(counter); 
 
             Play();
 
         }
-
+    
         static int GetIndex(int x, int y)
         {
             return (x - 1) + (y - 1) * 3;
@@ -58,6 +61,15 @@ namespace TicTacToeStarter
                 {
                  return  false;
                 }
+        }
+
+        static bool EmptyBox (int index) {
+            if (board[index] == "")
+            return true; 
+            else{
+                return false;
+            }
+
         }
 
 
