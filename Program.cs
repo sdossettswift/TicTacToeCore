@@ -8,11 +8,11 @@ namespace TicTacToeStarter
 {
     class Program
     {
-
         static string[] board = { " ", " ", " ",
                                   " ", " ", " ",
                                   " ", " ", " " };
         static int counter =0; 
+      
         static void Main(string[] args)
         {
             Console.WriteLine("> Let's play a game.");
@@ -26,13 +26,25 @@ namespace TicTacToeStarter
             Console.WriteLine("> Enter a spot. \"x,y\"");
             char[] delim = { ',' };
             string[] positions = Console.ReadLine().Split(delim); // --> "1,2" -> ["1", "2"]
+            List<int> oPlays = new List<int>();
+            List<int> xPlays = new List<int>();
+            
             int x = Int32.Parse(positions[0]);
             int y = Int32.Parse(positions[1]);
             int index = GetIndex(x, y);            
-            if ((x >= 0 && index<=3 ) && (y >= 0 && y<=3 ))
+            if ((x > 0 && x < 4 ) && (y > 0 && y < 4 ))
             {  
-                board[index] = "X";
-                counter += 1; 
+                if (counter % 2 == 0){
+                      board[index] = "X";
+                      xPlays.Add(index);
+                      counter += 1; 
+                    
+                }
+                else{
+                    board[index] = "O";
+                    oPlays.Add(index);
+                    counter += 1; 
+                }
             }
             else
             {
