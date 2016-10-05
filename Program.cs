@@ -61,7 +61,7 @@ namespace TicTacToeStarter
                     PrintBoard(); 
                     Console.WriteLine(counter); 
                     if (Winner() || Draw()){
-                        Console.WriteLine("Game Over"); 
+                        Console.WriteLine("Game Over."); 
                         Console.ReadLine(); 
                         System.Environment.Exit(0);
 
@@ -133,7 +133,7 @@ namespace TicTacToeStarter
 
          static bool Draw()
         {
-            if ((board[0] != " " && Winner()==false) &&
+            if ((board[0] != " " && Winner() == false) &&
                 (board[1] != " " && Winner() == false) &&
                 (board[2] != " " && Winner() == false) &&
                 (board[3] != " " && Winner() == false) &&
