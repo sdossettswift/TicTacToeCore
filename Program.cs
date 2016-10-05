@@ -60,6 +60,12 @@ namespace TicTacToeStarter
                     }
                     PrintBoard(); 
                     Console.WriteLine(counter); 
+                    if (Winner() || Draw()){
+
+                    }
+                    else{
+                        Play(); 
+                    }
 
                     Play();
 
@@ -99,6 +105,50 @@ namespace TicTacToeStarter
             }
 
         }
+
+        static bool Winner()
+        {
+            if (
+                (board[0] == board[1] && board[1] == board[2] && board[1] != " ") ||
+                (board[3] == board[4] && board[4] == board[5] && board[4] != " ") ||
+                (board[6] == board[7] && board[7] == board[8] && board[7] != " ") ||
+                (board[0] == board[4] && board[4] == board[8] && board[4] != " ") ||
+                (board[2] == board[4] && board[4] == board[6] && board[4] != " ") ||
+                (board[0] == board[3] && board[3] == board[6] && board[3] != " ") ||
+                (board[1] == board[4] && board[4] == board[7] && board[4] != " ") ||
+                (board[2] == board[5] && board[5] == board[8] && board[5] != " ")
+                )
+            {
+                Console.WriteLine("We've got a winner!");
+                return true; 
+                }
+            else 
+            {
+                return false; 
+            }
+        }
+
+         static bool Draw()
+        {
+            if ((board[0] != " " && Winner()==false) &&
+                (board[1] != " " && Winner() == false) &&
+                (board[2] != " " && Winner() == false) &&
+                (board[3] != " " && Winner() == false) &&
+                (board[4] != " " && Winner() == false) &&
+                (board[5] != " " && Winner() == false) &&
+                (board[6] != " " && Winner() == false) &&
+                (board[7] != " " && Winner() == false) &&
+                (board[8] != " " && Winner() == false))
+            {
+                Console.WriteLine("Draw!");
+                return true;
+            } else
+            {
+                return false;
+            }
+
+        }
+
 
 
         static void PrintBoard()
