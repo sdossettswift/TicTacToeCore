@@ -8,6 +8,7 @@ namespace TicTacToeStarter
 {
     class Program
     {
+        /*empty board and empty counters*/
         static string[] board = { " ", " ", " ",
                                   " ", " ", " ",
                                   " ", " ", " " };
@@ -31,35 +32,45 @@ namespace TicTacToeStarter
             
             int x = Int32.Parse(positions[0]);
             int y = Int32.Parse(positions[1]);
-            int index = GetIndex(x, y);            
-            if ((x > 0 && x < 4 ) && (y > 0 && y < 4 ))
-            {  
-                if (counter % 2 == 0){
-                      board[index] = "X";
-                      xPlays.Add(index);
-                      counter += 1; 
-                    
-                }
-                else{
-                    board[index] = "O";
-                    oPlays.Add(index);
-                    counter += 1; 
-                }
-            }
-            else
+            int index = GetIndex(x, y);
+
+            if (EmptySpot(index))
             {
-                Console.WriteLine("Invalid input. Please try again.");
+               if ((x > 0 && x < 4 ) && (y > 0 && y < 4 ))
+                    {  
+                        if (counter % 2 == 0){
+                            board[index] = "X";
+                            xPlays.Add(index);
+                            counter += 1; 
+                            
+                        }
+                        else{
+                            board[index] = "O";
+                            oPlays.Add(index);
+                            counter += 1; 
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please try again.");
 
-                Play();
-                
+                        Play();
+                        
+
+                    }
+                    PrintBoard(); 
+                    Console.WriteLine(counter); 
+
+                    Play();
+
+                }
+                else {
+                    Play(); 
+                }
 
             }
-            PrintBoard(); 
-            Console.WriteLine(counter); 
-
-            Play();
-
-        }
+                    
+       
     
         static int GetIndex(int x, int y)
         {
@@ -75,10 +86,15 @@ namespace TicTacToeStarter
                 }
         }
 
-        static bool EmptyBox (int index) {
-            if (board[index] == "")
-            return true; 
+
+
+        static bool EmptySpot (int i) {
+            if (board[i] != "X" && board[i]!="O"){
+                return true;                
+            }
+            
             else{
+                Console.WriteLine("Seat's taken. Try again.");
                 return false;
             }
 
