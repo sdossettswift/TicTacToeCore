@@ -61,6 +61,9 @@ namespace TicTacToeStarter
                     PrintBoard(); 
                     Console.WriteLine(counter); 
                     if (Winner() || Draw()){
+                        Console.WriteLine("Game Over"); 
+                        Console.ReadLine(); 
+                        System.Environment.Exit(0);
 
                     }
                     else{
